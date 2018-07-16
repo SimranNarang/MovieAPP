@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stackroute.movieapp.domain.Movie;
+import com.stackroute.movieapp.exceptions.MovieAlreadyExistsException;
+import com.stackroute.movieapp.exceptions.MovieNotFoundException;
 import com.stackroute.movieapp.services.MovieService;
 
 @RestController
@@ -30,7 +32,14 @@ public class MovieController {
 	
 	@PostMapping("/movie")
 	public ResponseEntity<?> saveMovie(@RequestBody Movie movie) {
-		return new ResponseEntity<Movie> (movieService.saveMovie(movie), HttpStatus.CREATED);
+		 
+		try {
+			Movie savedMovie = movieService.saveMovie(movie);
+			return new ResponseEntity<Movie> (savedMovie, HttpStatus.CREATED);
+		} catch (MovieAlreadyExistsException e) {
+			return new ResponseEntity<String>("Already exists!",HttpStatus.CONFLICT);
+		}
+		
 	}
 	
 	@GetMapping("/movies")
@@ -40,7 +49,13 @@ public class MovieController {
 	
 	@GetMapping("/movie/{id}")
 	public ResponseEntity<?> getMovieById(@PathVariable int id) {
-		return new ResponseEntity<Optional<Movie>> (movieService.getMovieById(id), HttpStatus.OK);
+		
+		try {
+			Optional<Movie> movie = movieService.getMovieById(id);
+			return new ResponseEntity<Optional<Movie>> (movie, HttpStatus.OK);
+		} catch (MovieNotFoundException e) {
+			return new ResponseEntity<String> ("Not Found", HttpStatus.CONFLICT);
+		}
 	}
 	
 	@DeleteMapping("/movie/{id}")
