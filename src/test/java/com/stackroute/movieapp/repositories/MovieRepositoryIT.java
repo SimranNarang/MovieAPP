@@ -1,4 +1,4 @@
-package com.stackroute.movieapp.controllers;
+package com.stackroute.movieapp.repositories;
 
 import static org.junit.Assert.*;
 
@@ -6,12 +6,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-public class MovieControllerTest {
 
-	@Test
-	public void testSaveMovie() {
-	assertTrue(true);
-	}
+@RunWith(SpringRunner.class)
+public class MovieRepositoryIT {
+
+
+    @Test
+    public void fakeTest(){
+        assertTrue(true);
+    }
 
 }
