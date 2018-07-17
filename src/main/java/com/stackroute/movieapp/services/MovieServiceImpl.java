@@ -22,8 +22,10 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public Movie saveMovie(Movie movie) throws MovieAlreadyExistsException {
-		if(movieRepository.getByName(movie.getTitle()) != null)
+		String title = movie.getTitle();
+		if(movieRepository.getByName(title) != null)
 			 throw new MovieAlreadyExistsException("Movie Already Exists");
+		
 		return movieRepository.save(movie);
 
 	}
@@ -46,7 +48,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public Movie updateMovie(Movie movie,int id) {
-		movie.setId(id);
+		
 		return movieRepository.save(movie);
 	}
 

@@ -2,6 +2,8 @@ package com.stackroute.movieapp.controllers;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ import com.stackroute.movieapp.services.MovieService;
 @RequestMapping("/api/v1")
 public class MovieController {
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private MovieService movieService;
 	
 	@Autowired
@@ -44,6 +47,10 @@ public class MovieController {
 	
 	@GetMapping("/movies")
 	public ResponseEntity<?> getAllMovies() {
+		logger.debug("This is a debug message");
+        logger.info("This is an info message");
+        logger.warn("This is a warn message");
+        logger.error("This is an error message");
 		return new ResponseEntity<Iterable<Movie>> (movieService.getAllMovies(), HttpStatus.OK);
 	}
 	
