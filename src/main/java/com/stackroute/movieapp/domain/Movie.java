@@ -9,11 +9,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Document
-@Data 
 public class Movie {
 	@Id
 	private int id;
