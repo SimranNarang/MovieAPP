@@ -9,14 +9,18 @@ import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.stackroute.movieapp.domain.Movie;
 import com.stackroute.movieapp.exceptions.MovieAlreadyExistsException;
 import com.stackroute.movieapp.repositories.MovieRepository;
 
+@RunWith(SpringRunner.class)
 public class MovieServiceTest {
 
 	  @Mock
@@ -30,11 +34,6 @@ public class MovieServiceTest {
 	    private transient MovieServiceImpl movieServiceImpl;
 
 	    /**
-	     * variable to hold user defined movies list
-	     */
-	    private transient Optional<Movie> options;
-
-	    /**
 	     * Initializing the declarations
 	     */
 	    @Before
@@ -42,7 +41,7 @@ public class MovieServiceTest {
 	        MockitoAnnotations.initMocks(this);
 	        movie = new Movie("POC", "good Movie", "www.abc.com", "2015-03-31");
 	        movie.setId(1);
-	        options = Optional.of(movie);
+	        Optional.of(movie);
 
 	    }
 
@@ -62,6 +61,7 @@ public class MovieServiceTest {
 	    public void testSaveMovieSuccess() throws MovieAlreadyExistsException {
 	        when(movieRepo.save(movie)).thenReturn(movie);
 	        Movie flag = movieServiceImpl.saveMovie(movie);
+	        assertEquals(movie,flag);
 	        verify(movieRepo, times(1)).save(movie);
 	       // verify(movieRepo, times(1)).findById(movie.getId());
 	    }

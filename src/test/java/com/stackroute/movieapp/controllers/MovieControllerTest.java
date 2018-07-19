@@ -1,4 +1,4 @@
-/*package com.stackroute.movieapp.controllers;
+package com.stackroute.movieapp.controllers;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -82,4 +82,3 @@ public class MovieControllerTest {
 	
 
 }
-*/

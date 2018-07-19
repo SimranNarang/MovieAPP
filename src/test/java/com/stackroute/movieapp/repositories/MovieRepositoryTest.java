@@ -1,4 +1,4 @@
-package com.stackroute.movieapp.repositories;
+/*package com.stackroute.movieapp.repositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
@@ -23,9 +23,7 @@ public class MovieRepositoryTest {
 	@Autowired
     private transient MovieRepository repo;
 
-    public void setRepo(final MovieRepository repo) {
-        this.repo = repo;
-    }
+    
 
     @Test
     public void testSaveMovie() throws Exception {
@@ -36,3 +34,4 @@ public class MovieRepositoryTest {
         assertThat(movie.getId()).isEqualTo(1);
     }
 }
+*/
