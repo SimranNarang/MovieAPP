@@ -9,7 +9,6 @@ import com.stackroute.movieapp.domain.Movie;
 import com.stackroute.movieapp.exceptions.MovieAlreadyExistsException;
 import com.stackroute.movieapp.exceptions.MovieNotFoundException;
 import com.stackroute.movieapp.repositories.MovieRepository;
-
 @Service
 public class MovieServiceImpl implements MovieService {
 
@@ -22,10 +21,10 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public Movie saveMovie(Movie movie) throws MovieAlreadyExistsException {
-		String title = movie.getTitle();
+		/*String title = movie.getTitle();
 		if(movieRepository.getByName(title) != null)
 			 throw new MovieAlreadyExistsException("Movie Already Exists");
-		
+		*/
 		return movieRepository.save(movie);
 
 	}
