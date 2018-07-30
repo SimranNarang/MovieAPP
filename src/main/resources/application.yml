@@ -1,4 +1,4 @@
-spring:
+
 logging:
  file: logs/dev_app.log
  pattern:
